@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app</title>
+  <!-- Fontawesome per icons -->
+  <script src="https://kit.fontawesome.com/55371dfc42.js" crossorigin="anonymous"></script>
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="7-1/style.css" />
+  <!-- MAPS -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <link rel="stylesheet" type="text/css" href="./css/maps.css" />
+  <script type="module" src="./js/maps.js"></script>
+  <script src="./js/login.js"></script>
+  <!-- WorkingPlaces -->
+  <script type="module" src="./working-places.js"></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-light bg-light justify-content-between shadow px-4">
+      <div class="ml-5">
+        <a href="index.html">LOGO</a>
+      </div>
+      <a href="login.html" class="text-decoration-none" style="color: var(--color1);">Login</a>
+    </nav>
+  </header>
+
+  <!-- LOGIN FORM -->
+  <button id="signInButton" onclick="divVisibility('signInContent');">SignIn</button>
+  <button id="signUpButton" onclick="divVisibility('signUpContent');">SignUp</button>
+  <button id="signUpGuideButton" onclick="divVisibility('signUpGuideContent');">SignUpGuide</button>
+  <div id="signInContent">
+    <h5 class="text-center my-5" style="margin-top: 500px;">SignIn</h5>
+    <form action="/signIn" method="post">
+      <div class="container login-form d-flex">
+        <div class="row justify-content-center">
+          <div class="row">
+            <input type="email" placeholder="e-mail" id="email" name="email" required>
+          </div>
+          <div class="row">
+            <input type="password" placeholder="password" id="password" name="password" required>
+          </div>
+          <button class="submit-btn mt-4">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="signUpContent" style="display: none;">
+    <h5 class="text-center my-5">SignUp</h5>
+    <form action="/signUpUsers" method="post">
+      <div class="container login-form d-flex">
+        <div class="row justify-content-center">
+          <div class="row">
+            <input type="email" placeholder="e-mail" id="email" name="email" required>
+          </div>
+          <div class="row">
+            <input type="password" placeholder="password" id="password" name="password" required>
+          </div>
+          <div class="row">
+            <input type="text" placeholder="name" id="displayName" name="displayName">
+          </div>
+          <div>
+            <input type="tel" placeholder="phone number" id="phoneNumber" name="phoneNumber">
+          </div>
+          <button class="submit-btn mt-4">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="signUpGuideContent" style="display: none;">
+    <h5 class="text-center my-5">SignUp TourGuide</h5>
+    <form action="/signUpGuides" method="post">
+      <div class="container login-form d-flex">
+        <div class="row justify-content-center">
+          <div class="row">
+            <input type="email" placeholder="e-mail" id="email" name="email" required>
+          </div>
+          <div class="row">
+            <input type="password" placeholder="password" id="password" name="password" required>
+          </div>
+          <div class="row">
+            <input type="text" placeholder="name" id="displayName" name="displayName" required>
+          </div>
+          <div class="row">
+            <input type="tel" placeholder="phone number" id="phoneNumber" name="phoneNumber" required>
+          </div>
+          <div class="row">
+            <input type="number" placeholder="id number" id="idNumber" name="idNumber" required>
+          </div>
+          <div class="row">
+            <!-- MAPS -->
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box" name="workingPlaces">
+          </div>
+          <button class="submit-btn mt-4">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button id="addPlace">Add Place</button>
+  <ul id="placeList"></ul>
+  <div style="margin-top: 100px;" id="map"></div>
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initAutocomplete&libraries=places&v=weekly"
+      defer
+    ></script>
+
+  <!-- FOOTER -->
+  <div class="footer d-none d-sm-none d-md-none d-lg-block mt-5">
+    <div class="container container-footer">
+      <div class="row text-white mt-5">
+        <div class="col-lg-4">
+          <h5>Contatti</h5>
+          <p class="mb-1"><small>Online Travel Agency</small></p>
+          <i class="fas fa-map-marker-alt float-left mr-2 mt-1 pl-1"></i>
+          <p class="mb-0"><small>Via Lorem Ipsum, 38</small></p>
+          <i class="fas fa-phone float-left mr-2 mt-1"></i>
+          <p class="mb-0"><small>0832 - 32.24.145</small></p>
+          <i class="fas fa-envelope float-left mr-2 mt-1"></i>
+          <p class="mb-0"><small>tripo@mail.com</small></p>
+        </div>
+        <div class="col-lg-4 text-center">
+          <h5>Page</h5>
+          <p class="mb-0">
+            <a href="" class="text-white"><small>About Us</small></a>
+          </p>
+          <p class="mb-0">
+            <a href="" class="text-white"><small>Servizi</small></a>
+          </p>
+          <p class="mb-0">
+            <a href="" class="text-white"><small>Lorem Ipsum</small></a>
+          </p>
+        </div>
+        <div class="col-lg-4 text-right">
+          <a href="" class="text-white"><i class="fab fa-facebook-f fa-lg mr-4"></i></a>
+          <a href="" class="text-white"><i class="fab fa-instagram fa-lg mr-4"></i></a>
+          <a href="" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-footer pt-3">
+    <div class="container">
+      <div class="row ml-3">
+        <div class="col-lg-4">
+          <small><a href="" class="text-white mr-3">Privacy Policy</a></small>
+          <small><a href="" class="text-white mr-3">Terms & Condition</a></small>
+          <small><a href="" class="text-white">Cookies</a></small>
+        </div>
+        <div class="col-lg-4">
+          <!-- Per mantenere lo spazio tra le colonne -->
+        </div>
+        <div class="col-lg-4 text-white">
+          <small><i class="far fa-copyright float-left mt-2 pl-5"></i></small>
+          <p class="pr-5">
+            <small>TripOrganizer, All Rights reserved</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
